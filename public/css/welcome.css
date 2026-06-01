@@ -1,0 +1,364 @@
+:root {
+    --dark-green: #17321A;
+    --green: #146939;
+    --light-green: #00954f;
+    --golden-yellow: #FDC530;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('/images/ALANGALANG_1.jpg') center/cover no-repeat;
+    z-index: -2;
+}
+
+body::after {
+    background:
+    linear-gradient(
+        135deg,
+        rgba(23,50,26,.85),
+        rgba(0,149,79,.60)
+    );
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(23,50,26,.95);
+    border-bottom: 2px solid var(--golden-yellow);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--golden-yellow);
+    color: var(--dark-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.login-btn-nav {
+    border: 2px solid var(--golden-yellow);
+    color: white;
+}
+
+.login-btn-nav:hover {
+    background: var(--golden-yellow);
+    color: var(--dark-green);
+}
+
+.register-btn-nav {
+    background: var(--golden-yellow);
+    color: var(--dark-green);
+}
+
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 50px 50px;
+}
+
+.hero-section {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.hero-left h1 {
+    font-size: 72px;
+    line-height: 1.1;
+}
+
+.hero-left span {
+    display: block;
+    color: var(--golden-yellow);
+}
+
+.hero-left p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    gap: 20px;
+}
+
+.hero-btn {
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.hero-btn-primary {
+    background: var(--golden-yellow);
+    color: var(--dark-green);
+}
+
+.hero-btn-secondary {
+    border: 2px solid white;
+    color: white;
+}
+
+.hero-right {
+    border: 1px solid var(--golden-yellow);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.feature-item {
+    background: rgba(20,105,57,.85);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    margin: auto auto 15px;
+    border-radius: 50%;
+    background: var(--golden-yellow);
+    color: var(--dark-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.feature-item h3 {
+    color: var(--golden-yellow);
+    margin-bottom: 10px;
+}
+
+.footer {
+    background: rgba(23,50,26,.95);
+    text-align: center;
+    padding: 25px;
+    border-top: 2px solid var(--golden-yellow);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px) {
+
+    .hero-section {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 80px;
+    align-items: center;
+}
+    .hero-left {
+        text-align: center;
+    }
+
+    .hero-left h1 {
+        font-size: 48px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+   .hero-right {
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 25px;
+    padding: 35px;
+    animation: float 4s ease-in-out infinite;
+    box-shadow: 0 20px 40px rgba(0,0,0,.3);
+}
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .logo-text {
+        font-size: 22px;
+    }
+
+    .nav-buttons {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .main-content {
+        padding: 150px 20px 40px;
+    }
+
+    .hero-left h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .hero-left p {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+@media (max-width: 480px) {
+
+    .hero-left h1 {
+        font-size: 28px;
+    }
+
+    .hero-left p {
+        font-size: 14px;
+    }
+
+    .feature-item {
+        padding: 20px;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 22px;
+    }
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+.ai-panel h2 {
+    color: var(--golden-yellow);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.status-card {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-card strong {
+    color: var(--golden-yellow);
+}
