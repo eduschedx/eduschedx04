@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Faculty;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -19,16 +21,33 @@ class AuthController extends Controller
     {
         $facultyId = strtoupper($request->faculty_id);
 
-        /*
-        |--------------------------------------------------------------------------
-        | ADMIN LOGIN
-        |--------------------------------------------------------------------------
-        */
-        $admin = Admin::where('admin_id', $facultyId)->first();
+        // Login limiter
+
+        $key = Str::lower($facultyId) . '|' . $request->ip();
+
+        if (RateLimiter::tooManyAttempts($key, 3)) {
+
+            return back()->with(
+                'error',
+                'Too many login attempts. Please try again after 1 minute.'
+            );
+        }
+
+        // Admin Login
+
+        $admin = Admin::where(
+            'admin_id',
+            $facultyId
+        )->first();
 
         if ($admin) {
 
-            if (!Hash::check($request->password, $admin->password)) {
+            if (!Hash::check(
+                $request->password,
+                $admin->password
+            )) {
+
+                RateLimiter::hit($key, 60);
 
                 return back()->with(
                     'error',
@@ -36,15 +55,27 @@ class AuthController extends Controller
                 );
             }
 
+            RateLimiter::clear($key);
+
+                session([
+
+                    'admin_id' => $admin->admin_id,
+
+                    'admin_name' =>
+                        $admin->first_name . ' ' .
+                        $admin->last_name
+
+                ]);
+
             return redirect('/admin/dashboard');
         }
 
-        /*
-        |--------------------------------------------------------------------------
-        | FACULTY LOGIN
-        |--------------------------------------------------------------------------
-        */
-        $faculty = Faculty::where('faculty_id', $facultyId)->first();
+        // Faculty Login
+
+        $faculty = Faculty::where(
+            'faculty_id',
+            $facultyId
+        )->first();
 
         if (!$faculty) {
 
@@ -58,7 +89,7 @@ class AuthController extends Controller
 
             return back()->with(
                 'error',
-                'Your application is still pending wait for administrator approval.'
+                'Your application is still pending administrator approval.'
             );
         }
 
@@ -70,13 +101,26 @@ class AuthController extends Controller
             );
         }
 
-        if (!Hash::check($request->password, $faculty->password)) {
+        if (!Hash::check(
+            $request->password,
+            $faculty->password
+        )) {
+
+            RateLimiter::hit($key, 60);
 
             return back()->with(
                 'error',
                 'Incorrect password.'
             );
         }
+
+      $faculty->update([
+
+            'last_seen' => now()
+
+        ]);
+
+        RateLimiter::clear($key);
 
         return redirect('/faculty/dashboard');
     }
@@ -88,15 +132,21 @@ class AuthController extends Controller
 
     public function handleGoogleCallback()
     {
-        $googleUser = Socialite::driver('google')
-            ->stateless()
-            ->user();
+        try {
 
-        /*
-        |--------------------------------------------------------------------------
-        | CHECK IF FACULTY ALREADY EXISTS
-        |--------------------------------------------------------------------------
-        */
+            $googleUser = Socialite::driver('google')
+                ->stateless()
+                ->user();
+
+        } catch (\Exception $e) {
+
+            return redirect('/login')
+                ->with(
+                    'error',
+                    'Google authentication failed. Please try again.'
+                );
+        }
+
         $faculty = Faculty::where(
             'email',
             $googleUser->email
@@ -104,61 +154,130 @@ class AuthController extends Controller
 
         if ($faculty) {
 
-            return redirect('/login')
-                ->with(
-                    'error',
-                    'An application already exists for this Google account.'
-                );
+            // Pending application
+
+            if ($faculty->status === 'pending') {
+
+                return redirect('/login')
+                    ->with(
+                        'error',
+                        'Your application is still pending administrator approval.'
+                    );
+            }
+
+            // Approved account
+
+            if ($faculty->status === 'approved') {
+
+                return redirect('/login')
+                    ->with(
+                        'error',
+                        'This Google account already has an approved faculty account.'
+                    );
+            }
+
+            // Rejected account
+
+            if ($faculty->status === 'rejected') {
+
+                $faculty->delete();
+            }
         }
 
         return view('faculty.application', [
+
             'google_id' => $googleUser->id,
-            'name'      => $googleUser->name,
-            'email'     => $googleUser->email,
+
+            'name' => $googleUser->name,
+
+            'email' => $googleUser->email,
+
         ]);
     }
 
     public function submitFacultyApplication(Request $request)
     {
-        $request->validate([
-            'faculty_id' => [
-                'required',
-                'unique:faculties,faculty_id',
-                'regex:/^VA-\d{5}$/'
+        $request->validate(
+
+            [
+
+                'faculty_id' => [
+                    'required',
+                    'regex:/^VA-\d{5}$/',
+                    'unique:faculties,faculty_id'
+                ],
+
+                'department' => 'required',
+
+                'specialization' => 'required',
+
+                'password' => [
+                    'required',
+                    'confirmed',
+                    'min:8'
+                ],
+
             ],
 
-            'department' => 'required',
-            'specialization' => 'required',
+            [
 
-            'password' => [
-                'required',
-                'confirmed',
-                'min:8'
-            ],
-        ]);
+                'faculty_id.unique' =>
+                    'Faculty ID is already registered in the system.',
 
-                Faculty::create([
+                'faculty_id.regex' =>
+                    'Faculty ID must follow the format VA-00001.',
+
+                'faculty_id.required' =>
+                    'Faculty ID is required.',
+
+                'password.confirmed' =>
+                    'Passwords do not match.'
+
+            ]
+        );
+
+        Faculty::create([
+
             'google_id' => $request->google_id,
 
-            'faculty_id' => strtoupper($request->faculty_id),
+            'faculty_id' => strtoupper(
+                $request->faculty_id
+            ),
 
             'first_name' => $request->first_name,
+
             'middle_name' => $request->middle_name,
+
             'last_name' => $request->last_name,
 
             'email' => $request->email,
 
             'department' => $request->department,
+
             'specialization' => $request->specialization,
 
-            'password' => Hash::make($request->password),
+            'password' => Hash::make(
+                $request->password
+            ),
 
             'status' => 'pending'
         ]);
+
         return redirect('/login')
             ->with(
                 'success',
                 'Application submitted successfully. Please wait for administrator approval.'
             );
     }
+
+    public function logout()
+{
+    session()->flush();
+
+    return redirect('/login')
+        ->with(
+            'success',
+            'You have successfully logged out.'
+        );
+}
 }

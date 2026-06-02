@@ -98,6 +98,7 @@
                         id="faculty_id"
                         name="faculty_id"
                         class="form-control"
+                        placeholder="Enter Faculty ID"
                         required>
                 </div>
 

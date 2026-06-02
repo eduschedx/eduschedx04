@@ -87,25 +87,42 @@
             <div class="form-group">
                 <label>Faculty ID</label>
                 <input
-                    type="text"
-                    name="faculty_id"
-                    placeholder="VA-00001"
-                    value="{{ old('faculty_id') }}"
-                    required
-                >
+                type="text"
+                name="faculty_id"
+                value="{{ old('faculty_id') }}"
+                required>
+
+            @error('faculty_id')
+
+            <div class="error-message">
+
+                {{ $message }}
+
+            </div>
+
+            @enderror
+
                 <small>Format: VA-XXXXX</small>
             </div>
 
             <div class="form-group">
                 <label>Department</label>
                 <select name="department" required>
-                    <option value="">Select Department</option>
-                    <option value="CCS">CCS</option>
-                    <option value="COE">COE</option>
-                    <option value="CAS">CAS</option>
-                    <option value="COA">COA</option>
-                    <option value="COEd">COEd</option>
-                </select>
+                <option value="">Select Department</option>
+
+                <option value="DIT">
+                    Department of Information Technology (DIT)
+                </option>
+
+                <option value="DTE">
+                    Department of Teacher Education (DTE)
+                </option>
+
+                <option value="DAES">
+                    Department of Agricultural and Environmental Sciences (DAES)
+                </option>
+
+            </select>
             </div>
 
            <div class="form-group">

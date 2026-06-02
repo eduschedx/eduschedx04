@@ -1,4 +1,3 @@
-alert('JS Loaded');
 // Password strength meter
 const passwordInput = document.getElementById('password');
 const passwordBar = document.getElementById('password-bar');
