@@ -1,0 +1,262 @@
+/* =========================
+   TABLE CONTAINER
+========================= */
+
+.table-container{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.table-header h2{
+    color:var(--dark-green);
+}
+
+/* =========================
+   FILTERS
+========================= */
+
+.table-filters{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.table-filters select,
+.table-filters input{
+
+    height:45px;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:10px;
+
+    padding:0 15px;
+
+    background:white;
+
+    min-width:180px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+.table-filters input{
+    width:250px;
+}
+
+.table-filters select:focus,
+.table-filters input:focus{
+
+    border-color:#00954f;
+
+    box-shadow:0 0 0 3px rgba(0,149,79,.10);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:linear-gradient(
+        to right,
+        var(--dark-green),
+        var(--green)
+    );
+    color:white;
+}
+
+th{
+    padding:18px;
+    text-align:left;
+    font-size:14px;
+}
+
+td{
+    padding:16px;
+    border-bottom:1px solid #eee;
+}
+
+tbody tr{
+    transition:.2s;
+}
+
+tbody tr:hover{
+    background:#f8fffa;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    border:none;
+}
+
+.status.pending{
+
+    background:#fff3cd;
+
+    color:#b7791f;
+}
+
+.status.approved{
+
+    background:#d1fae5;
+
+    color:#065f46;
+}
+
+.status.rejected{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+}
+
+/* =========================
+   ONLINE / OFFLINE
+========================= */
+
+.online{
+
+    color:#6b7280;
+
+    font-weight:600;
+
+    background:none;
+
+    border:none;
+
+    padding:0;
+
+    display:flex;
+
+    align-items:center;
+}
+
+.offline{
+
+    color:#6b7280;
+
+    font-weight:600;
+
+    background:none;
+
+    border:none;
+
+    padding:0;
+
+    display:flex;
+
+    align-items:center;
+}
+
+.status-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    margin-right:8px;
+}
+
+.online-dot{
+    background:#22c55e;
+}
+
+.offline-dot{
+    background:#9ca3af;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.btn{
+
+    text-decoration:none;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    display:inline-block;
+}
+
+.approve{
+
+    background:#10b981;
+}
+
+.approve:hover{
+
+    background:#059669;
+
+    transform:translateY(-2px);
+}
+
+.reject{
+
+    background:#ef4444;
+}
+
+.reject:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+}
+
+.edit-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    cursor:pointer;
+}
+
+.edit-btn:hover{
+
+    background:#1d4ed8;
+}

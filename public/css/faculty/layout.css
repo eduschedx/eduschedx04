@@ -1,0 +1,28 @@
+:root{
+
+    --green:#146939;
+
+    --dark-green:#17321A;
+
+    --light-bg:#f5f7fa;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+
+    background:var(--light-bg);
+}
+
+.main{
+
+    margin-left:280px;
+
+    padding:30px;
+}

@@ -1,0 +1,74 @@
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card{
+    padding:25px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.clickable-card{
+    cursor:pointer;
+}
+
+.clickable-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.card i{
+    font-size:32px;
+    margin-bottom:15px;
+    color:inherit;
+}
+
+.card h2{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.card p{
+    font-size:16px;
+    font-weight:500;
+}
+
+/* =========================
+   VSU THEMED CARDS
+========================= */
+
+.pending{
+
+    background:#eef8f0;
+
+    border-left:8px solid #146939;
+
+    color:#17321A;
+}
+
+.approved{
+
+    background:#e6f7eb;
+
+    border-left:8px solid #0f5132;
+
+    color:#17321A;
+}
+
+.rejected{
+
+    background:#edf8f0;
+
+    border-left:8px solid #2d6a4f;
+
+    color:#17321A;
+}

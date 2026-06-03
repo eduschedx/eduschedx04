@@ -122,8 +122,9 @@ class AuthController extends Controller
 
         RateLimiter::clear($key);
 
-        return redirect('/faculty/dashboard');
-    }
+        return redirect()
+        ->route('faculty.dashboard');
+        }
 
     public function redirectToGoogle()
     {
@@ -195,80 +196,103 @@ class AuthController extends Controller
         ]);
     }
 
-    public function submitFacultyApplication(Request $request)
-    {
-        $request->validate(
+        public function submitFacultyApplication(Request $request)
+        {
+            $request->validate(
 
-            [
+                [
 
-                'faculty_id' => [
-                    'required',
-                    'regex:/^VA-\d{5}$/',
-                    'unique:faculties,faculty_id'
+                    'faculty_id' => [
+                        'required',
+                        'regex:/^VA-\d{5}$/',
+                        'unique:faculties,faculty_id'
+                    ],
+
+                    'department' => 'required',
+
+                    'specialization' => 'required',
+
+                    'password' => [
+                        'required',
+                        'confirmed',
+                        'min:8'
+                    ],
+
                 ],
 
-                'department' => 'required',
+                [
 
-                'specialization' => 'required',
+                    'faculty_id.unique' =>
+                        'Faculty ID is already registered in the system.',
 
-                'password' => [
-                    'required',
-                    'confirmed',
-                    'min:8'
-                ],
+                    'faculty_id.regex' =>
+                        'Faculty ID must follow the format VA-XXXXX.',
 
-            ],
+                    'faculty_id.required' =>
+                        'Faculty ID is required.',
 
-            [
+                    'password.confirmed' =>
+                        'Passwords do not match.'
 
-                'faculty_id.unique' =>
-                    'Faculty ID is already registered in the system.',
-
-                'faculty_id.regex' =>
-                    'Faculty ID must follow the format VA-00001.',
-
-                'faculty_id.required' =>
-                    'Faculty ID is required.',
-
-                'password.confirmed' =>
-                    'Passwords do not match.'
-
-            ]
-        );
-
-        Faculty::create([
-
-            'google_id' => $request->google_id,
-
-            'faculty_id' => strtoupper(
-                $request->faculty_id
-            ),
-
-            'first_name' => $request->first_name,
-
-            'middle_name' => $request->middle_name,
-
-            'last_name' => $request->last_name,
-
-            'email' => $request->email,
-
-            'department' => $request->department,
-
-            'specialization' => $request->specialization,
-
-            'password' => Hash::make(
-                $request->password
-            ),
-
-            'status' => 'pending'
-        ]);
-
-        return redirect('/login')
-            ->with(
-                'success',
-                'Application submitted successfully. Please wait for administrator approval.'
+                ]
             );
-    }
+
+            $existingFaculty = Faculty::where(
+                'google_id',
+                $request->google_id
+            )
+            ->whereIn(
+                'status',
+                [
+                    'pending',
+                    'approved'
+                ]
+            )
+            ->first();
+
+            if ($existingFaculty)
+            {
+                return redirect()
+                    ->back()
+                    ->with(
+                        'error',
+                        'You already have an active faculty application.'
+                    );
+            }
+
+            Faculty::create([
+
+                'google_id' => $request->google_id,
+
+                'faculty_id' => strtoupper(
+                    $request->faculty_id
+                ),
+
+                'first_name' => $request->first_name,
+
+                'middle_name' => $request->middle_name,
+
+                'last_name' => $request->last_name,
+
+                'email' => $request->email,
+
+                'department' => $request->department,
+
+                'specialization' => $request->specialization,
+
+                'password' => Hash::make(
+                    $request->password
+                ),
+
+                'status' => 'pending'
+            ]);
+
+            return redirect('/login')
+                ->with(
+                    'success',
+                    'Application submitted successfully. Please wait for administrator approval.'
+                );
+        }
 
     public function logout()
 {

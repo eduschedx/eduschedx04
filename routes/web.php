@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FacultyController;
 
 Route::get('/', function () {
 
@@ -120,3 +121,10 @@ Route::get(
     '/logout',
     [AuthController::class, 'logout']
 )->name('logout');
+
+//faculty dashboard
+
+Route::get(
+    '/faculty/dashboard',
+    [FacultyController::class, 'dashboard']
+)->name('faculty.dashboard');

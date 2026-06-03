@@ -27,7 +27,10 @@ class AdminController extends Controller
                 'rejected'
             )->count(),
 
-            'faculties' => Faculty::orderBy(
+            'faculties' => Faculty::whereIn(
+                'status',
+                ['pending', 'approved']
+            )->orderBy(
                 'created_at',
                 'desc'
             )->get()

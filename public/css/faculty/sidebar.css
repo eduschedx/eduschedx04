@@ -1,0 +1,119 @@
+.sidebar{
+
+    width:280px;
+
+    min-height:100vh;
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    padding:25px;
+
+    background:linear-gradient(
+        to bottom,
+        #17321A,
+        #146939
+    );
+
+    color:white;
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:25px;
+}
+
+.logo i{
+
+    color:#F6C531;
+
+    font-size:30px;
+}
+
+.logo h2{
+
+    margin:0;
+
+    font-size:32px;
+}
+
+.faculty-card{
+
+    text-align:center;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(
+        255,
+        255,
+        255,
+        .08
+    );
+
+    margin-bottom:30px;
+}
+
+.profile-avatar{
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    background:#2E7D32;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin:0 auto 15px;
+}
+
+.menu{
+
+    list-style:none;
+
+    padding:0;
+}
+
+.menu li{
+
+    padding:15px;
+
+    margin-bottom:10px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.menu li.active{
+
+    background:#2E7D32;
+}
+
+.logout-link{
+
+    color:white;
+
+    text-decoration:none;
+}

@@ -1,0 +1,394 @@
+/* =========================
+   BASE MODAL
+========================= */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.5);
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+}
+
+.modal-content{
+
+    width:420px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.20);
+
+    animation:modalShow .3s ease;
+}
+
+/* =========================
+   REJECT MODAL
+========================= */
+
+.modal-header{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+.modal-header i{
+
+    font-size:50px;
+
+    color:#dc2626;
+
+    margin-bottom:10px;
+}
+
+.modal-header h3{
+
+    color:#17321A;
+}
+
+.modal-content p{
+
+    color:#6b7280;
+
+    margin-bottom:25px;
+}
+
+.faculty-details{
+
+    background:#f8fafc;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin:15px 0;
+
+    text-align:left;
+}
+
+.faculty-details p{
+
+    margin:8px 0;
+
+    color:#17321A;
+}
+
+.warning-text{
+
+    color:#dc2626;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+}
+
+.modal-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+}
+
+.confirm-btn{
+
+    text-decoration:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    background:#dc2626;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.confirm-btn:hover{
+
+    background:#b91c1c;
+}
+
+/* =========================
+   OVERLAY MODALS
+========================= */
+
+.modal-overlay{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(
+        0,
+        0,
+        0,
+        .55
+    );
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+}
+
+/* =========================
+   EDIT MODAL
+========================= */
+
+.modal-content h2{
+
+    text-align:left;
+
+    color:#17321A;
+
+    margin-bottom:25px;
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:15px;
+}
+
+.form-group label{
+
+    display:block;
+
+    text-align:left;
+
+    font-weight:600;
+
+    color:#17321A;
+
+    margin-bottom:8px;
+}
+
+.form-group input,
+.form-group select{
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.cancel-btn{
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    background:#6b7280;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:600;
+}
+
+.cancel-btn:hover{
+
+    background:#4b5563;
+}
+
+.save-btn{
+
+    background:#146939;
+
+    color:white;
+
+    border:none;
+}
+
+.save-btn:hover{
+
+    background:#0f5132;
+}
+
+/* =========================
+   CONFIRM EDIT MODAL
+========================= */
+
+.confirm-modal{
+
+    width:420px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.25);
+
+    animation:fadeIn .25s ease;
+}
+
+.confirm-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+.confirm-header i{
+
+    font-size:26px;
+
+    color:#146939;
+}
+
+.confirm-header h3{
+
+    margin:0;
+
+    color:#17321A;
+}
+
+.confirm-text{
+
+    color:#6b7280;
+
+    margin-bottom:20px;
+}
+
+.confirm-info{
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    margin-bottom:20px;
+}
+
+.info-item{
+
+    margin-bottom:12px;
+}
+
+.info-item:last-child{
+
+    margin-bottom:0;
+}
+
+.info-item label{
+
+    display:block;
+
+    font-size:12px;
+
+    color:#6b7280;
+
+    margin-bottom:4px;
+}
+
+.info-item span{
+
+    font-weight:600;
+
+    color:#17321A;
+}
+
+.confirm-warning{
+
+    text-align:center;
+
+    color:#374151;
+
+    margin-bottom:25px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes modalShow{
+
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
