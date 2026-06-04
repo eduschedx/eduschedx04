@@ -19,4 +19,12 @@ class Faculty extends Model
     'status'
 ];
 
+public function loads()
+{
+    return $this->hasMany(
+        FacultyLoad::class
+    );
 }
+
+}
+

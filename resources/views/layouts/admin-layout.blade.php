@@ -3,6 +3,12 @@
 
 <head>
 
+    <link
+    rel="stylesheet"
+    href="{{ asset('css/admin/admin.css') }}">
+
+    @yield('styles')
+
     <meta charset="UTF-8">
 
     <meta
@@ -29,7 +35,9 @@
         rel="stylesheet"
         href="{{ asset('css/admin/admin.css') }}">
 
-
+    <link
+    rel="stylesheet"
+    href="{{ asset('css/admin/faculty-subjects.css') }}">
 </head>
 
 <body>
@@ -51,6 +59,8 @@
     <script src="{{ asset('js/admin/reject-modal.js') }}"></script>
 
     <script src="{{ asset('js/admin/edit-modal.js') }}"></script>
+
+    <script src="{{ asset('js/admin/subjects.js') }}"></script>
 
     <script src="{{ asset('js/admin/admin.js') }}"></script>
 

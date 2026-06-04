@@ -136,33 +136,167 @@
 }
 
 /* =========================
-   OVERLAY MODALS
+   MODAL OVERLAY
 ========================= */
 
-.modal-overlay{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:rgba(
-        0,
-        0,
-        0,
-        .55
-    );
-
+.modal{
     display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-content{
+    background:#fff;
+    width:900px;
+    max-width:90%;
+    border-radius:20px;
+    padding:25px;
+}
+
+@keyframes modalFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(-20px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+/* =========================
+   MODAL HEADER
+========================= */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
 
     align-items:center;
 
-    justify-content:center;
+    margin-bottom:25px;
 
-    z-index:9999;
+    padding-bottom:15px;
+
+    border-bottom:
+        1px solid #eee;
+}
+
+.modal-header h2{
+
+    margin:0;
+
+    color:#17321A;
+
+    font-size:28px;
+
+    font-weight:700;
+}
+
+.close-btn{
+
+    font-size:30px;
+
+    color:#777;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.close-btn:hover{
+
+    color:#146939;
+}
+
+/* =========================
+   FORM INPUTS
+========================= */
+
+.modal-content form{
+
+    display:grid;
+
+    gap:15px;
+}
+
+.modal-content input,
+.modal-content select{
+
+    width:100%;
+
+    padding:12px 15px;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.modal-content input:focus,
+.modal-content select:focus{
+
+    outline:none;
+
+    border-color:#146939;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            20,
+            105,
+            57,
+            .10
+        );
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.modal-content button{
+
+    margin-top:10px;
+
+    background:#146939;
+
+    color:white;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.modal-content button:hover{
+
+    background:#0f542d;
 }
 
 /* =========================
@@ -391,4 +525,81 @@
 
         transform:translateY(0);
     }
+}
+
+
+.modal-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.close-btn{
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#666;
+}
+
+.close-btn:hover{
+    color:#000;
+}
+
+.edit-btn{
+
+    background:#1976D2;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.edit-btn:hover{
+
+    background:#1565C0;
+}
+
+.delete-btn{
+
+    background:#dc3545;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-left:5px;
+
+    transition:.3s;
+}
+
+.delete-btn:hover{
+
+    background:#bb2d3b;
 }

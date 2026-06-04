@@ -1,0 +1,165 @@
+/* =========================
+   PAGE HEADER
+========================= */
+
+.dashboard-header h1{
+
+    color:#17321A;
+
+    font-weight:700;
+}
+
+.dashboard-header p{
+
+    color:#6b7280;
+}
+
+/* =========================
+   FACULTY SUBJECT CARDS
+========================= */
+
+.card{
+
+    border:none !important;
+
+    border-radius:18px !important;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.08);
+}
+
+.card-header{
+
+    padding:18px 25px;
+}
+
+.card-header h5{
+
+    margin:0;
+
+    font-weight:700;
+}
+
+/* =========================
+   FACULTY SELECT
+========================= */
+
+.form-select{
+
+    height:52px;
+
+    border-radius:12px;
+
+    border:2px solid #e5e7eb;
+}
+
+.form-select:focus{
+
+    border-color:#146939;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(20,105,57,.15);
+}
+
+/* =========================
+   SUBJECT ROWS
+========================= */
+
+.subject-row{
+
+    transition:.3s ease;
+}
+
+.subject-row:hover{
+
+    background:#eef8f0;
+}
+
+.form-check-input{
+
+    transform:scale(1.2);
+
+    cursor:pointer;
+}
+
+.form-check-input:checked{
+
+    background-color:#146939;
+
+    border-color:#146939;
+}
+
+/* =========================
+   SUBJECT BADGES
+========================= */
+
+.subject-code{
+
+    background:#146939;
+
+    color:white;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+    margin-right:10px;
+}
+
+.subject-units{
+
+    background:#eef8f0;
+
+    color:#146939;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    font-weight:600;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.assign-btn{
+
+    background:#146939;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:12px 30px;
+
+    font-weight:600;
+
+    transition:.3s ease;
+}
+
+.assign-btn:hover{
+
+    background:#0f5132;
+
+    transform:translateY(-2px);
+}
+
+/* =========================
+   ALERT
+========================= */
+
+.alert-success{
+
+    border:none;
+
+    border-radius:12px;
+}

@@ -260,3 +260,29 @@ tbody tr:hover{
 
     background:#1d4ed8;
 }
+
+.add-subject-btn{
+
+    background:#146939;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.add-subject-btn:hover{
+
+    background:#0f542d;
+
+    transform:translateY(-2px);
+}

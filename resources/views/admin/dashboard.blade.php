@@ -30,11 +30,6 @@
 
 @include('admin.modals.reject-modal')
 
-@include('admin.modals.edit-modal')
-
-@include('admin.modals.confirm-edit-modal')
-
-@include('admin.partials.sidebar')
 
 @endsection
 

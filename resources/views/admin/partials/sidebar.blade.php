@@ -26,30 +26,55 @@
 
     </div>
 
-    <ul class="menu">
+   <ul class="menu">
 
-        <li class="active">
+    <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+
+        <a href="{{ route('dashboard') }}" class="logout-link">
 
             <i class="fas fa-chart-line"></i>
 
             Dashboard
 
-        </li>
+        </a>
 
-        <li>
+    </li>
 
-            <a
-                href="{{ route('logout') }}"
-                class="logout-link">
+    <li class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}">
 
-                <i class="fas fa-sign-out-alt"></i>
+        <a href="{{ route('subjects.index') }}" class="logout-link">
 
-                Logout
+            <i class="fas fa-book"></i>
 
-            </a>
+            Subject Management
 
-        </li>
+        </a>
 
-    </ul>
+    </li>
 
+    <li class="{{ request()->routeIs('faculty-subjects.*') ? 'active' : '' }}">
+
+    <a href="{{ route('faculty-subjects.index') }}">
+
+        <i class="fas fa-link"></i>
+
+        Faculty Subject Assignment
+
+    </a>
+
+</li>
+
+    <li>
+
+        <a href="{{ route('logout') }}" class="logout-link">
+
+            <i class="fas fa-sign-out-alt"></i>
+
+            Logout
+
+        </a>
+
+    </li>
+
+</ul>
 </div>

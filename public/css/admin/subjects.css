@@ -1,0 +1,415 @@
+.curriculum-card{
+
+    background:#ffffff;
+
+    border-left:6px solid #146939;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,.08);
+}
+
+.curriculum-card:hover{
+
+    transform:translateY(-5px);
+
+    background:#eef8f0;
+}
+
+.curriculum-card i{
+
+    font-size:32px;
+
+    color:#146939;
+
+    margin-bottom:10px;
+}
+
+.curriculum-card h5{
+
+    color:#17321A;
+
+    font-weight:700;
+
+    margin:0;
+}
+
+/* =========================
+   CURRICULUM MODAL
+========================= */
+
+.modal-content{
+
+    width:900px;
+
+    max-width:95%;
+
+    padding:30px;
+
+    border-radius:24px;
+
+    background:white;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.curriculum-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:20px;
+}
+
+/* =========================
+   YEAR CARDS
+========================= */
+
+.year-card,
+.semester-card{
+
+    background:white;
+
+    border-left:6px solid #146939;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,.08);
+}
+
+.year-card:hover,
+.semester-card:hover{
+
+    transform:translateY(-5px);
+
+    background:#eef8f0;
+}
+
+.year-card i,
+.semester-card i{
+
+    font-size:32px;
+
+    color:#146939;
+
+    margin-bottom:15px;
+}
+
+.year-card h4,
+.semester-card h4{
+
+    margin:0;
+
+    color:#17321A;
+
+    font-weight:700;
+}
+
+.year-card small{
+
+    color:#777;
+
+    display:block;
+
+    margin-top:8px;
+}
+
+/* =========================
+   MODAL HEADER
+========================= */
+
+.modal-header{
+
+    border-bottom:1px solid #e5e7eb;
+
+    margin-bottom:25px;
+
+    padding-bottom:15px;
+}
+
+.modal-header h2{
+
+    color:#17321A;
+
+    font-weight:700;
+}
+
+/* =========================
+   CURRICULUM MODAL CARDS
+========================= */
+
+.curriculum-year-card,
+.curriculum-sem-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    border-left:6px solid #146939;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.08);
+
+    transition:.3s ease;
+}
+
+.curriculum-year-card:hover,
+.curriculum-sem-card:hover{
+
+    transform:translateY(-5px);
+
+    background:#eef8f0;
+}
+
+.curriculum-year-card i,
+.curriculum-sem-card i{
+
+    font-size:38px;
+
+    color:#146939;
+
+    margin-bottom:15px;
+}
+
+.curriculum-year-card h4,
+.curriculum-sem-card h4{
+
+    color:#17321A;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.curriculum-year-card p{
+
+    color:#6b7280;
+
+    margin:0;
+}
+
+.header-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:center;
+}
+
+
+.import-btn i{
+
+    color:#17321A !important;
+}
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.header-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:center;
+}
+
+
+
+.add-subject-btn{
+
+    background:#146939 !important;
+
+    color:white !important;
+}
+
+.import-btn{
+
+    background:#FDC530 !important;
+
+    color:#17321A !important;
+
+    border:none !important;
+
+    padding:12px 20px !important;
+
+    border-radius:12px !important;
+
+    font-weight:700 !important;
+
+    display:inline-flex !important;
+
+    align-items:center !important;
+
+    gap:8px !important;
+}
+
+.import-btn:hover{
+
+    background:#e5b21d !important;
+
+    color:#17321A !important;
+}
+
+.import-btn{
+
+    background:#FDC530 !important;
+
+    color:#17321A !important;
+}
+
+.import-btn i{
+
+    color:#17321A !important;
+}
+
+.header-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:center;
+}
+
+.import-btn,
+.add-subject-btn{
+
+    height:50px;
+
+    padding:0 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+}
+
+.import-btn{
+
+    background:#FDC530;
+
+    color:#17321A;
+}
+
+.add-subject-btn{
+
+    background:#146939;
+
+    color:#ffffff;
+}
+/* =========================
+   SEARCH BAR
+========================= */
+
+.search-wrapper{
+
+    position:relative;
+
+    width:350px;
+
+    margin-bottom:20px;
+}
+
+.search-wrapper i{
+
+    position:absolute;
+
+    left:16px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#146939;
+
+    font-size:18px;
+
+    z-index:2;
+}
+
+#subjectSearch{
+
+    width:100%;
+
+    height:48px;
+
+    padding:0 16px 0 48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.08);
+
+    font-size:15px;
+
+    color:#17321A;
+
+    outline:none;
+
+    transition:.3s ease;
+}
+
+#subjectSearch:focus{
+
+    box-shadow:
+        0 0 0 4px rgba(20,105,57,.15),
+        0 6px 18px rgba(0,0,0,.08);
+}
+
+#subjectSearch::placeholder{
+
+    color:#9ca3af;
+}
